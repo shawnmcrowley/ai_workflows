@@ -1,0 +1,19 @@
+# Use the official language flow image
+FROM langflowai/langflow:latest
+
+# Set the initial user to root
+USER root
+
+# Copy SSL certificates to /usr/local/share/ca-certificates
+COPY ca-certificates/* /usr/local/share/ca-certificates/
+
+# Run apt update (simulate) and upgrade
+#RUN apt update -s && apt full-upgrade -y
+
+# Install update-ca-certificates
+RUN apt install -y update-ca-certificates && update-ca-certificates --fresh
+
+# Install libgl1-mesa-glx
+RUN apt install -y libgl1-mesa-glx
+
+USER user
