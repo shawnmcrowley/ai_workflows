@@ -1,6 +1,6 @@
-# AI Workflows with Langflow, PostgreSQL, and Next.js
+# AI Workflows with Langflow, PostgreSQL, and Ollama
 
-A comprehensive AI-powered system that combines Langflow's visual workflow builder with PostgreSQL's vector database capabilities and a modern Next.js frontend to create intelligent agents and document processing workflows.
+A comprehensive AI-powered system that combines Langflow's visual workflow builder with PostgreSQL's vector database capabilities and local Ollama models to create intelligent agents and document processing workflows.
 
 ## 🏗️ Architecture Overview
 
@@ -8,7 +8,7 @@ This project demonstrates the integration of three powerful technologies:
 
 - **Langflow**: Visual AI workflow builder for creating sophisticated AI agents and processing pipelines
 - **PostgreSQL**: Vector database for efficient document storage and semantic search
-- **Next.js**: Modern React framework for building responsive user interfaces
+- **Ollama**: Local LLM runtime for privacy-focused AI processing
 
 ## 🚀 Available Workflows
 
@@ -42,16 +42,16 @@ The `flows/` directory contains pre-built Langflow workflows for various AI task
 - **Code Access**: Full Python customization capabilities
 
 ### PostgreSQL Vector Database
-- **Vector Extension**: `pg_vector` for high-dimensional similarity search
+- **Vector Extension**: `pgvector` for high-dimensional similarity search
 - **Document Storage**: Efficient storage of document embeddings
 - **Semantic Search**: Fast cosine similarity queries
 - **Scalable Architecture**: IVFFlat indexes for production performance
 
-### Next.js Frontend
-- **Modern UI**: Responsive design with Tailwind CSS
-- **Real-time Interaction**: Live document upload and search
-- **Component Architecture**: Modular, reusable UI components
-- **API Integration**: Seamless backend connectivity
+### Ollama Integration
+- **Local Models**: Run LLMs locally without API costs
+- **Privacy First**: No data sent to external services
+- **Model Flexibility**: Support for Llama, Mistral, and custom models
+- **Embedding Generation**: Snowflake Arctic Embed for semantic search
 
 ## 📁 Project Structure
 
@@ -61,16 +61,8 @@ ai_workflows/
 │   ├── Docling Processing.json     # Document processing pipeline
 │   ├── Document Q&A.json          # Question-answering workflow
 │   └── News and Web Search.json   # Web content aggregation
-├── nextjs_postgres_rag/           # Next.js frontend application
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── api/              # API routes for backend integration
-│   │   │   ├── components/       # React UI components
-│   │   │   └── page.js          # Main application interface
-│   │   └── lib/                  # Utility functions and configurations
-│   ├── postgres/                 # Database schema and setup
-│   └── package.json             # Node.js dependencies
-└── langflow/                     # Langflow source and configuration
+├── postgres/                       # Database schema and setup
+└── langflow/                       # Langflow source and configuration
 ```
 
 ## 🗄️ Database Schema
@@ -122,10 +114,10 @@ CREATE TABLE document_chunks (
 ## 🔧 Development Setup
 
 ### Prerequisites
-- Node.js 18+
-- PostgreSQL 14+ with vector extension
+- PostgreSQL 14+ with pgvector extension
 - Python 3.10+ (for Langflow)
-- OpenAI API key (for embeddings)
+- Ollama installed locally
+- Docker (optional, for containerized deployment)
 
 ### Installation
 
@@ -138,29 +130,29 @@ CREATE TABLE document_chunks (
 2. **Set up PostgreSQL**
    ```bash
    # Create database
-   createdb rag_db
+   createdb vectordb
    
    # Enable vector extension
-   psql rag_db -c "CREATE EXTENSION IF NOT EXISTS vector;"
+   psql vectordb -c "CREATE EXTENSION IF NOT EXISTS vector;"
    ```
 
-3. **Install Next.js dependencies**
+3. **Install Ollama**
    ```bash
-   cd nextjs_postgres_rag
-   npm install
+   # Download from https://ollama.ai
+   # Pull required models
+   ollama pull llama3.2
+   ollama pull snowflake-arctic-embed2
    ```
 
 4. **Install Langflow**
    ```bash
-   cd ../langflow
    pip install langflow
    ```
 
 5. **Configure environment variables**
    ```bash
-   # In nextjs_postgres_rag/.env.local
-   OPENAI_API_KEY=your_openai_key
-   DATABASE_URL=postgresql://user:pass@localhost/rag_db
+   DATABASE_URL=postgresql://postgres:postgres@localhost/vectordb
+   OLLAMA_HOST=http://localhost:11434
    ```
 
 ### Running the Application
@@ -171,17 +163,16 @@ CREATE TABLE document_chunks (
    docker-compose up -d postgres
    ```
 
-2. **Launch Langflow**
+2. **Start Ollama**
+   ```bash
+   ollama serve
+   # Runs at http://localhost:11434
+   ```
+
+3. **Launch Langflow**
    ```bash
    langflow run
    # Access at http://localhost:7860
-   ```
-
-3. **Start Next.js frontend**
-   ```bash
-   cd nextjs_postgres_rag
-   npm run dev
-   # Access at http://localhost:3000
    ```
 
 ## 🔄 Workflow Integration
@@ -194,19 +185,9 @@ CREATE TABLE document_chunks (
 
 ### API Integration
 - Workflows expose RESTful endpoints automatically
-- Next.js frontend communicates via HTTP requests
+- Ollama provides local model inference
 - Real-time processing with streaming responses
 - Error handling and retry mechanisms
-
-## 🎨 UI Components
-
-The Next.js application includes:
-
-- **Document Upload Component**: Multi-file upload with progress tracking
-- **Search Interface**: Natural language query input
-- **Results Display**: Formatted answer presentation
-- **Chat Interface**: Interactive conversation history
-- **Status Indicators**: Processing and loading states
 
 ## 🚀 Deployment
 
@@ -233,22 +214,10 @@ docker-compose up -d
 ## 📚 Resources
 
 - [Langflow Documentation](https://docs.langflow.org)
-- [PostgreSQL Vector Extension](https://github.com/pgvector/pgvector)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [OpenAI API Reference](https://platform.openai.com/docs)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Implement your changes
-4. Add tests and documentation
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+- [PostgreSQL pgvector Extension](https://github.com/pgvector/pgvector)
+- [Ollama Documentation](https://ollama.ai/docs)
+- [Snowflake Arctic Embed](https://huggingface.co/Snowflake/snowflake-arctic-embed-m)
 
 ---
 
-**Built with ❤️ using Langflow, PostgreSQL, and Next.js**
+**Built with ❤️ using Langflow, PostgreSQL, and Ollama**
