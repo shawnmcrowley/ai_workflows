@@ -1,1 +1,1 @@
-docker build -t custom-language-flow-image .
+docker build -t custom-langflow-image .

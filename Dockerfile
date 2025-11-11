@@ -1,66 +1,23 @@
-# syntax=docker/dockerfile:1
-FROM python:3.12-slim AS builder
+# Use the official Langflow image as the base
+FROM langflowai/langflow:latest
 
-# Set environment variables to avoid interactive apt prompts
-ENV DEBIAN_FRONTEND=noninteractive
+# Switch to root user to install system packages (if not already root)
+# The default user might be non-root, check the base image documentation if needed.
+USER root
 
-# Update apt, install system dependencies, and clean up apt lists in a single layer
-# We install ffmpeg as an example of a custom apt package
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    git \
-    ffmpeg \
-    libgl1 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+# Update the package list and install libgl1 and other potentially useful headless libraries
+RUN apt-get update && apt-get install -y libgl1 libglib2.0-0 ffmpeg libsm6 libxext6 && rm -rf /var/lib/apt/lists/*
 
-# Copy SSL certificates to /usr/local/share/ca-certificates
-COPY ca-certificates/* /usr/local/share/ca-certificates/
+# Switch back to the default user if the base image uses a specific user
+# Check the base image documentation for the correct user, often 'langflow' or 'app'
+USER user 
 
-# Run apt update (simulate) and upgrade
-#RUN apt update -s && apt full-upgrade -y
-
-# Install update-ca-certificates
-#RUN apt-get install -y update-ca-certificates && update-ca-certificates --fresh
-RUN update-ca-certificates --fresh
-
-# Install libgl1-mesa-glx
-# RUN apt-get install -y libgl1-mesa-glx
-
-# Set the working directory inside the container
+# Set the working directory (if the base image doesn't set it)
 WORKDIR /app
 
+# Optional: Copy your specific flows or requirements if needed
+# COPY requirements.txt .
+#RUN pip install
+COPY ./flows /app/flows
 
-# Install Python dependencies
-#RUN pip install --upgrade pip
-
-# Install the main langflow package
-RUN pip install langflow
-
-# --- Final Stage: Runtime ---
-FROM python:3.12-slim
-
-# Set environment variables
-ENV DEBIAN_FRONTEND=noninteractive
-# Set LANGFLOW_COMPONENTS_PATH if using custom components
-# ENV LANGFLOW_COMPONENTS_PATH=/app/custom_components
-
-# Install runtime apt dependencies, including the required ffmpeg
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    ffmpeg \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-# Set the working directory
-WORKDIR /app
-
-# Copy the installed Python packages from the builder stage
-COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
-# Copy your application code or custom components
-# COPY src/backend/base/langflow/components/helpers ./custom_components
-
-# Expose the port Langflow runs on
-EXPOSE 7860
-
-# Command to run the Langflow application when the container starts
-CMD ["langflow", "run", "--host", "0.0.0.0", "--port", "7860"]
+# The entrypoint command from the original image will run automatically.
