@@ -8,6 +8,12 @@ USER root
 # Update the package list and install libgl1 and other potentially useful headless libraries
 RUN apt-get update && apt-get install -y libgl1 libglib2.0-0 ffmpeg libsm6 libxext6 && rm -rf /var/lib/apt/lists/*
 
+# Copy SSL certificates to /usr/local/share/ca-certificates
+COPY ca-certificates/* /usr/local/share/ca-certificates/
+
+# Install update-ca-certificates
+RUN update-ca-certificates --fresh
+
 # Switch back to the default user if the base image uses a specific user
 # Check the base image documentation for the correct user, often 'langflow' or 'app'
 USER user 
