@@ -1,1 +1,5 @@
 docker build -t custom-langflow-image .
+
+# Force a New build
+
+docker build --pull -t custom-langflow-image .
