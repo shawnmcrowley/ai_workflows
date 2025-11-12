@@ -26,4 +26,3 @@ WORKDIR /app
 #RUN pip install
 COPY ./flows /app/flows
 
-# The entrypoint command from the original image will run automatically.
