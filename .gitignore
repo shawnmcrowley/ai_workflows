@@ -1,2 +1,4 @@
 /ca-certificates
+/node_modules
 *.txt
+.env*

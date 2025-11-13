@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/scrowley/Source/ai_workflows/src/app/components/ServiceWorkerRegistration.js"],"sourcesContent":["'use client';\n\nimport { useEffect } from 'react';\n\nexport default function ServiceWorkerRegistration() {\n  useEffect(() => {\n    if ('serviceWorker' in navigator) {\n      navigator.serviceWorker.register('/sw.js');\n    }\n  }, []);\n\n  return null;\n}\n"],"names":[],"mappings":";;;;AAEA;;AAFA;;AAIe,SAAS;;IACtB,IAAA,0KAAS;+CAAC;YACR,IAAI,mBAAmB,WAAW;gBAChC,UAAU,aAAa,CAAC,QAAQ,CAAC;YACnC;QACF;8CAAG,EAAE;IAEL,OAAO;AACT;GARwB;KAAA"}}]
+}

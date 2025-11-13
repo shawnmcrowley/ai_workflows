@@ -1,0 +1,21 @@
+{
+  "name": "AI Workflows",
+  "short_name": "AI Workflows",
+  "description": "Build intelligent AI workflows with Langflow, PostgreSQL, and Ollama",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "./icons/192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
