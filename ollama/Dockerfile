@@ -9,9 +9,9 @@ RUN nohup ollama serve > /tmp/ollama.log 2>&1 & \
     sleep 10 && \
     ollama pull minimax-m2:cloud && \
     ollama pull glm-4.6:cloud && \
-    ollama pull snowflake-arctic-embed2 && \
-    ollama pull llama3.1 && \
-    kill $(jobs -p)
+    ollama pull snowflake-arctic-embed2
+   # ollama pull llama3.1 && \
+   # kill $(jobs -p)
 
 # Stage 2: Final image for deployment
 FROM ollama/ollama:latest
