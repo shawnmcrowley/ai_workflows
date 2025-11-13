@@ -4,7 +4,7 @@ services:
     ports:
       - "11434:11434"
     volumes:
-      - ollama-data:/root/.ollama
+      - ollama-data:/root/.ollama # Update to remove volumes and use custom built image with models pre-downloaded
     #network_mode: "host"
   ollama-webui:
     image: ghcr.io/open-webui/open-webui:latest
@@ -17,6 +17,6 @@ services:
     depends_on:
       - ollama
     #network_mode: "host"
-volumes:
+volumes:  # remove Ollama volumes when using custom built image with models pre-downloaded
   ollama-data:
   ollama-webui-data:
