@@ -1,7 +1,2 @@
-[00:00:02.097] Server  LOG      ✓ Ready in 1288ms
-[00:00:05.321] Server  LOG      ○ Compiling / ...
-[00:02:47.934] Server  LOG      ✓ Compiled in 366ms
-[00:03:05.091] Server  LOG      ✓ Compiled in 198ms
-[00:03:15.719] Server  LOG      ✓ Compiled in 202ms
-[00:03:17.416] Server  LOG      ✓ Compiled in 168ms
-[00:03:20.671] Server  LOG      ✓ Compiled in 208ms
+[00:00:03.482] Server  LOG      ✓ Ready in 2.9s
+[00:00:14.172] Server  LOG      ○ Compiling / ...
