@@ -1,0 +1,10 @@
+curl --request POST \
+     --url 'http://172.17.0.1:7860/api/v1/run/318f9e14-ca9b-4c02-b908-b3dc06bb0963?stream=false' \
+     --header 'Content-Type: application/json' \
+     --header 'x-api-key: sk-ULVSrEE3sPOMFA15ZfcqCddcL8Ad55yM8DlIg6MbF6E' \
+     --data '{
+		           "output_type": "chat",
+		           "input_type": "chat",
+		           "input_value": "What is Ollama",
+		           "session_id": "Curl Query"
+		         }'

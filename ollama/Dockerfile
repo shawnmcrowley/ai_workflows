@@ -5,14 +5,13 @@ FROM ollama/ollama:latest AS builder
 # nohup ensures the process continues even if the shell exits
 # sleep allows the server to initialize
 # ollama pull downloads the desired model
+# Install other models -> ollama pull llama3.1 && and kill the process after kill $(jobs -p)
 RUN nohup ollama serve > /tmp/ollama.log 2>&1 & \
     sleep 10 && \
     ollama pull minimax-m2:cloud && \
     ollama pull glm-4.6:cloud && \
     ollama pull snowflake-arctic-embed2
-   # ollama pull llama3.1 && \
-   # kill $(jobs -p)
-
+   
 # Stage 2: Final image for deployment
 FROM ollama/ollama:latest
 
