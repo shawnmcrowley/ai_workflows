@@ -1,5 +1,5 @@
 import './globals.css';
-import ServiceWorkerRegistration from './components/ServiceWorkerRegistration';
+import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 
 export const metadata = {
   title: 'AI Workflows',

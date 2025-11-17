@@ -10,9 +10,9 @@ export default function Header() {
             <h1 className="text-2xl font-bold">AI Workflows</h1>
           </div>
           <nav className="hidden md:flex space-x-6">
-            <a href="#features" className="hover:text-blue-200 transition">Features</a>
-            <a href="#workflows" className="hover:text-blue-200 transition">Workflows</a>
-            <a href="#docs" className="hover:text-blue-200 transition">Documentation</a>
+            <a href="/" className="hover:text-blue-200 transition">Features</a>
+            <a href="/workflows" className="hover:text-blue-200 transition">Workflows</a>
+            <a href="/docs" className="hover:text-blue-200 transition">Documentation</a>
           </nav>
         </div>
       </div>

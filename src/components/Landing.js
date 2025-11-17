@@ -1,3 +1,7 @@
+'use client'
+
+import { Button } from '@/components/ui/button'
+
 export default function Landing() {
   return (
     <main className="flex-1">
@@ -10,12 +14,17 @@ export default function Landing() {
             Combine Langflow's visual builder with PostgreSQL vector database and local Ollama models for powerful AI applications.
           </p>
           <div className="flex justify-center space-x-4">
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+            <Button size="lg" className="px-8">
               Get Started
-            </button>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition">
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="px-8"
+              onClick={() => window.location.href = '/workflows'}
+            >
               View Workflows
-            </button>
+            </Button>
           </div>
         </div>
       </section>
