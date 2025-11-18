@@ -3,6 +3,7 @@
   "short_name": "AI Workflows",
   "description": "Build intelligent AI workflows with Langflow, PostgreSQL, and Ollama",
   "start_url": "/",
+  "id": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
@@ -54,18 +55,18 @@
   ],
    "screenshots": [
         {
-          "src": "/icons/screen_shot.png",
+          "src": "/icons/screenshot-1280x720.png",
           "sizes": "1280x720",
           "type": "image/png",
           "form_factor": "wide",
-          "label": "My PWA on Desktop"
+          "label": "AI Workflows on Desktop"
         },
         {
-          "src": "/icons/screen_shot.png",
+          "src": "/icons/screenshot-485x1024.png",
           "sizes": "485x1024",
           "type": "image/png",
           "form_factor": "narrow",
-          "label": "My PWA on Mobile"
+          "label": "AI Workflows on Mobile"
         }
       ]
 }

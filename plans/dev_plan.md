@@ -5,6 +5,7 @@ Completed: 4. Add new images to /public/icons for PWA can you create a very simp
 Completed: 5. make button components blue in main page and workflow page as well as tabs
 Completed: 6. Move the workflow.api to /actions and create a server action to replace API call so it stays on the server
 Completed: 7. Update workflow/pages form to call the server action
+```
 8. Add Swagger Documentation:
     openapi: 3.0.0
     info:
