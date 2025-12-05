@@ -9,8 +9,10 @@ FROM ollama/ollama:latest AS builder
 # Add afer serve to log smaller installs >> /tmp/ollama.log 2>&1 & \
 RUN nohup ollama serve & \
     sleep 10 && \
+    ollama pull ministral-3:3b && \
     ollama pull llama3.1 && \
-    ollama pull minimax-m2:cloud && \
+    ollama pull minimax-m2:cloud && \ 
+    ollama pull mistral-large-3:675b-cloud && \
     ollama pull glm-4.6:cloud && \
     ollama pull snowflake-arctic-embed2 && \
     ollama pull embeddinggemma
