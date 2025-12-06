@@ -14,8 +14,7 @@ RUN nohup ollama serve & \
     ollama pull minimax-m2:cloud && \ 
     ollama pull mistral-large-3:675b-cloud && \
     ollama pull glm-4.6:cloud && \
-    ollama pull snowflake-arctic-embed2 && \
-    ollama pull embeddinggemma
+    ollama pull snowflake-arctic-embed2
    
 # Stage 2: Final image for deployment
 FROM ollama/ollama:latest
