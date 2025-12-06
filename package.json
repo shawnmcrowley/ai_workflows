@@ -31,7 +31,8 @@
     "tailwindcss": "^3.4.1"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev-remote": "next dev --hostname 0.0.0.0",
+	"dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
