@@ -37,7 +37,7 @@ export default function LangflowInterface() {
       <main className="flex-1 bg-gradient-to-br from-slate-50 to-slate-100 p-6">
         <div className="max-w-6xl mx-auto space-y-6">
           <div className="text-center space-y-2">
-            <h1 className="text-4xl font-bold text-slate-900">Langflow API Interface</h1>
+            <h1 className="text-4xl font-bold text-slate-900">N8N API Interface</h1>
             <p className="text-slate-600">Execute workflows with text input or file uploads</p>
           </div>
 
@@ -56,7 +56,7 @@ export default function LangflowInterface() {
                   
                   <TabsContent value="config" className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="workflow">Select Langflow Workflow</Label>
+                      <Label htmlFor="workflow">Select N8N Workflow</Label>
                       <select 
                         id="workflow"
                         value={selectedFlow} 
@@ -100,7 +100,7 @@ export default function LangflowInterface() {
                       </div>
                     </div>
                     <p className="text-xs text-gray-500">
-                      Get this URL from your Langflow interface after creating a workflow
+                      Get this URL from your N8N interface after creating a workflow
                     </p>
 
                     <div className="space-y-2">
@@ -173,7 +173,7 @@ export default function LangflowInterface() {
             <Card>
               <CardHeader>
                 <CardTitle>Results</CardTitle>
-                <CardDescription>Workflow execution results and outputs</CardDescription>
+                <CardDescription>Workflow Execution Results and Outputs</CardDescription>
               </CardHeader>
               <CardContent>
                 {isLoading ? (

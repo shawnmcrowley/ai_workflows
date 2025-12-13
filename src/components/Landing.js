@@ -11,7 +11,7 @@ export default function Landing() {
             Build Intelligent AI Workflows
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Combine Langflow's visual builder with PostgreSQL vector database and local Ollama models for powerful AI applications.
+            Combine N8N's visual builder with PostgreSQL vector database and local Ollama models for powerful AI applications.
           </p>
           <div className="flex justify-center space-x-4">
             <Button size="lg" className="px-8">
@@ -38,7 +38,7 @@ export default function Landing() {
                 <span className="text-2xl">🔄</span>
               </div>
               <h4 className="text-xl font-semibold mb-2">Visual Workflows</h4>
-              <p className="text-gray-600">Build AI pipelines with Langflow's drag-and-drop interface.</p>
+              <p className="text-gray-600">Build AI pipelines with N8N's drag-and-drop interface.</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">

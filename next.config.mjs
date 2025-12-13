@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+cacheComponents: false,
 allowedDevOrigins: [
     'http://192.168.1.*',  // Allow any device on your local network
     'http://192.168.*.*',  // Or broader network range
