@@ -1,18 +1,18 @@
-# AI Workflows with Langflow, PostgreSQL, and Ollama
+# AI Workflows with N8N, PostgreSQL, and Ollama
 
-A comprehensive AI-powered system that combines Langflow's visual workflow builder with PostgreSQL's vector database capabilities and local Ollama models to create intelligent agents and document processing workflows.
+A comprehensive AI-powered system that combines N8N's visual workflow builder with PostgreSQL's vector database capabilities and local Ollama models to create intelligent agents and document processing workflows.
 
 ## 🏗️ Architecture Overview
 
 This project demonstrates the integration of three powerful technologies:
 
-- **Langflow**: Visual AI workflow builder for creating sophisticated AI agents and processing pipelines
+- **N8N**: Visual AI workflow builder for creating sophisticated AI agents and processing pipelines
 - **PostgreSQL**: Vector database for efficient document storage and semantic search
 - **Ollama**: Local LLM runtime for privacy-focused AI processing
 
 ## 🚀 Available Workflows
 
-The `flows/` directory contains pre-built Langflow workflows for various AI tasks:
+The `flows/` directory contains pre-built N8N workflows for various AI tasks:
 
 ### 1. Document Q&A Workflow
 - **File**: `Document Q&A.json`
@@ -34,7 +34,7 @@ The `flows/` directory contains pre-built Langflow workflows for various AI task
 
 ## 🛠️ Technology Stack
 
-### Langflow Integration
+### N8N Integration
 - **Visual Workflow Builder**: Drag-and-drop interface for creating AI pipelines
 - **Multi-Agent Support**: Orchestrate complex AI interactions
 - **Component Library**: Pre-built components for common AI tasks
@@ -115,7 +115,7 @@ CREATE TABLE document_chunks (
 
 ### Prerequisites
 - PostgreSQL 14+ with pgvector extension
-- Python 3.10+ (for Langflow)
+- Python 3.10+ (for N8N)
 - Ollama installed locally
 - Docker (optional, for containerized deployment)
 
@@ -144,10 +144,10 @@ CREATE TABLE document_chunks (
    ollama pull snowflake-arctic-embed2
    ```
 
-4. **Install Langflow**
-   ```bash
-   pip install langflow
-   ```
+4. **Install N8N**
+  
+  [N8N Self Hosting](https://docs.n8n.io/hosting/)
+
 
 5. **Configure environment variables**
    ```bash
@@ -169,19 +169,12 @@ CREATE TABLE document_chunks (
    # Runs at http://localhost:11434
    ```
 
-3. **Launch Langflow**
+3. **Launch N8N**
    ```bash
-   langflow run
-   # Access at http://localhost:7860
+   docker compose up -d
+   # Access at http://localhost:5678
    ```
 
-## 🔄 Workflow Integration
-
-### Importing Workflows
-1. Open Langflow at `http://localhost:7860`
-2. Import JSON files from the `flows/` directory
-3. Configure API endpoints and model settings
-4. Test workflows in the Langflow playground
 
 ### API Integration
 - Workflows expose RESTful endpoints automatically
@@ -213,11 +206,11 @@ docker-compose up -d
 
 ## 📚 Resources
 
-- [Langflow Documentation](https://docs.langflow.org)
+- [N8N Documentation](https://n8n.io)
 - [PostgreSQL pgvector Extension](https://github.com/pgvector/pgvector)
 - [Ollama Documentation](https://ollama.ai/docs)
 - [Snowflake Arctic Embed](https://huggingface.co/Snowflake/snowflake-arctic-embed-m)
 
 ---
 
-**Built with ❤️ using Langflow, PostgreSQL, and Ollama**
+**Built with ❤️ using N8N, PostgreSQL, and Ollama**
