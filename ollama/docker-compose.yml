@@ -1,23 +1,24 @@
 services:
-  ollama: # Use Ollama official image to pull the latest models, Use custom built image with models pre-downloaded to avoid pulling models every time
-   # image: ollama/ollama:latest
-    image: ollama-with-models-v1:latest
+  ollama:
+    image: ollama/ollama:latest
+    pull_policy: never
     ports:
       - "11434:11434"
-    #volumes:
-    #  - ollama-data:/root/.ollama # Update to remove volumes and use custom built image with models pre-downloaded
-    #network_mode: "host"
+    volumes:
+     - ollama-data:/root/.ollama
+     - /etc/ssl/certs:/etc/ssl/certs
+        
   ollama-webui:
     image: ghcr.io/open-webui/open-webui:latest
     ports:
       - "8080:8080"
     environment:
-      - OLLAMA_BASE_URL=http://172.20.0.2:11434
+      - OLLAMA_BASE_URL=http://localhost:11434
     volumes:
       - ollama-webui-data:/app/backend/data
+      - /etc/ssl/certs:/etc/ssl/certs
     depends_on:
       - ollama
-    #network_mode: "host"
-volumes:  # remove Ollama volumes when using custom built image with models pre-downloaded
-  #ollama-data:
+volumes:
+  ollama-data:
   ollama-webui-data:
