@@ -57,12 +57,12 @@ The `flows/` directory contains pre-built N8N workflows for various AI tasks:
 
 ```
 ai_workflows/
-├── flows/                          # Langflow workflow definitions
+├── flows/                          # N8N workflow definitions
 │   ├── Docling Processing.json     # Document processing pipeline
 │   ├── Document Q&A.json          # Question-answering workflow
 │   └── News and Web Search.json   # Web content aggregation
 ├── postgres/                       # Database schema and setup
-└── langflow/                       # Langflow source and configuration
+└── ollama/                       # Ollama Docker Files
 ```
 
 ## 🗄️ Database Schema
