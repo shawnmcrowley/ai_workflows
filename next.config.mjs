@@ -1,13 +1,19 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+const isProxied = process.env.USE_PROXY === 'true';
+
 const nextConfig = {
-cacheComponents: false,
-allowedDevOrigins: [
+  reactStrictMode: false,
+  basePath: (isProd || isProxied) ? '/workflow_automation' : '',
+  assetPrefix: (isProd || isProxied) ? '/workflow_automation' : '',
+  
+  cacheComponents: false,
+  allowedDevOrigins: [
     'http://192.168.1.*',  // Allow any device on your local network
     'http://192.168.*.*',  // Or broader network range
     'http://10.0.0.*',     // If using a different subnet
   ],
-//  basePath: process.env.NODE_ENV === 'production' ? '/ai_workflows' : '',  
-  
+
   async headers() {
     return [
       {

@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
 export default function Landing() {
@@ -14,17 +15,16 @@ export default function Landing() {
             Combine N8N's visual builder with PostgreSQL vector database and local Ollama models for powerful AI applications.
           </p>
           <div className="flex justify-center space-x-4">
-            <Button size="lg" className="px-8">
-              Get Started
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="px-8"
-              onClick={() => window.location.href = '/workflows'}
-            >
-              View Workflows
-            </Button>
+            <Link href="/">
+              <Button size="lg" className="px-8">
+                Get Started
+              </Button>
+            </Link>
+            <Link href="/workflows">
+              <Button variant="outline" size="lg" className="px-8">
+                View Workflows
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

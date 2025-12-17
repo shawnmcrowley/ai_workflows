@@ -32,7 +32,8 @@
   },
   "scripts": {
     "dev-remote": "next dev --hostname 0.0.0.0",
-	"dev": "next dev",
+    "dev:proxy": "USE_PROXY=true next dev --turbo",
+	  "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
