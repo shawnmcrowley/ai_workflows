@@ -1,20 +1,39 @@
+networks:
+  integration_network:
+    external: true
 services:
   ollama:
     image: ollama/ollama:latest
+    container_name: ollama
     pull_policy: always
+    restart: unless-stopped
     ports:
       - "11434:11434"
+    networks:
+      - integration_network  
     volumes:
-     - ollama-data:/root/.ollama
-     - /etc/ssl/certs:/etc/ssl/certs
+      - ollama-data:/root/.ollama
+      - /etc/ssl/certs:/etc/ssl/certs
         
   ollama-webui:
     image: ghcr.io/open-webui/open-webui:latest
+    container_name: webui
     pull_policy: always
+    restart: unless-stopped
     ports:
       - "8080:8080"
+    networks:
+      - integration_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ollama-webui.rule=Host(`localhost`) && PathPrefix(`/ollama`)"
+      - "traefik.http.routers.ollama-webui.entrypoints=websecure"
+      - "traefik.http.routers.ollama-webui.tls=true"
+      - "traefik.http.services.ollama-webui.loadbalancer.server.port=8080"
+      - "traefik.http.middlewares.ollama-strip.stripprefix.prefixes=/ollama"
+      - "traefik.http.routers.ollama-webui.middlewares=ollama-strip"
     environment:
-      - OLLAMA_BASE_URL=http://localhost:11434
+      - OLLAMA_BASE_URL=http://ollama:11434
     volumes:
       - ollama-webui-data:/app/backend/data
       - /etc/ssl/certs:/etc/ssl/certs
