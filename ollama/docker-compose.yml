@@ -24,16 +24,10 @@ services:
       - "8080:8080"
     networks:
       - integration_network
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.ollama-webui.rule=Host(`localhost`) && PathPrefix(`/ollama`)"
-      - "traefik.http.routers.ollama-webui.entrypoints=websecure"
-      - "traefik.http.routers.ollama-webui.tls=true"
-      - "traefik.http.services.ollama-webui.loadbalancer.server.port=8080"
-      - "traefik.http.middlewares.ollama-strip.stripprefix.prefixes=/ollama"
-      - "traefik.http.routers.ollama-webui.middlewares=ollama-strip"
+    
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
+
     volumes:
       - ollama-webui-data:/app/backend/data
       - /etc/ssl/certs:/etc/ssl/certs
